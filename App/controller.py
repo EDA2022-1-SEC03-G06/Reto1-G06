@@ -29,9 +29,43 @@ import csv
 El controlador se encarga de mediar entre la vista y el modelo.
 """
 
-# Inicialización del Catálogo de libros
+# Inicialización del Catálogo de álbumes
+
+def newController():
+    """
+    Crea una instancia del modelo
+    """
+    control = {
+        'model': None
+    }
+    control['model'] = model.newCatalog()
+    return control
 
 # Funciones para la carga de datos
+
+def loadData(control):
+    """
+    Carga los datos de los archivos y cargar los datos en la
+    estructura de datos
+    """
+    catalog = control['model']
+    album = loadAlbums(catalog)
+    artists = loadArtists(catalog)
+    songs = loadSongs(catalog)
+    sortBooks(catalog)
+    return album, artists, songs
+
+def loadAlbums(catalog):
+    """
+    Carga los libros del archivo.  Por cada libro se toman sus autores y por
+    cada uno de ellos, se crea en la lista de autores, a dicho autor y una
+    referencia al libro que se esta procesando.
+    """
+    albumsfile = cf.data_dir + 'Datos/spotify-albums-utf8-small.csv'
+    input_file = csv.DictReader(open(albumsfile, encoding='utf-8'))
+    for album in input_file:
+        model.addAlbum(catalog, album)
+    return model.albumSize(catalog)
 
 # Funciones de ordenamiento
 

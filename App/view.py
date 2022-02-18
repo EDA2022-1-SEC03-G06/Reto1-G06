@@ -37,7 +37,11 @@ operación solicitada
 def printMenu():
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- ")
+    print("2- Buscar álbumes por fecha")
+    print("3- Listar artistas más populares")
+    print("4- Listar canciones más populares")
+    print("5- Canción más destacada de un artista")
+    print("6- Discografía de un artista")
 
 catalog = None
 
