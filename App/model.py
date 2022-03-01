@@ -37,6 +37,26 @@ los mismos.
 
 # Construccion de modelos
 
+def newCatalog():
+    """
+    Inicializa el catálogo de libros. Crea una lista vacia para guardar
+    todos los libros, adicionalmente, crea una lista vacia para los autores,
+    una lista vacia para los generos y una lista vacia para la asociación
+    generos y libros. Retorna el catalogo inicializado.
+    """
+    catalog = {'albums': None,
+               'artists': None,
+               'songs': None,}
+
+    catalog['albums'] = lt.newList('ARRAY_LIST')
+    catalog['artists'] = lt.newList('SINGLE_LINKED',
+                                    cmpfunction=compareartists)
+    catalog['songs'] = lt.newList('SINGLE_LINKED',
+                                 cmpfunction=comparesongs)
+
+    return catalog
+
+
 # Funciones para agregar informacion al catalogo
 
 # Funciones para creacion de datos

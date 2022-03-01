@@ -95,3 +95,18 @@ def sortAlbums(catalog):
     model.sortAlbums(catalog)
 
 # Funciones de consulta sobre el catálogo
+
+def getAlbumssByAuthor(control, authorname):
+    """
+    Retrona los albumes de un artista
+    """
+    author = model.getAlbumssByAuthor(control['model'], authorname)
+    return author
+
+
+def getBestAlbums(control, number):
+    """
+    Retorna los mejores albumes
+    """
+    bestAlbums = model.getBestAlbums(control['model'], number)
+    return bestAlbums
