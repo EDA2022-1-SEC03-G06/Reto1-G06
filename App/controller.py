@@ -57,9 +57,9 @@ def loadData(control):
 
 def loadAlbums(catalog):
     """
-    Carga los libros del archivo.  Por cada libro se toman sus autores y por
-    cada uno de ellos, se crea en la lista de autores, a dicho autor y una
-    referencia al libro que se esta procesando.
+    Carga los albumes del archivo.  Por cada album se toma su artista 
+    principal y se crea en la lista de artistas, a dicho artista y una
+    referencia al album que se esta procesando.
     """
     albumsfile = cf.data_dir + 'Datos/spotify-albums-utf8-small.csv'
     input_file = csv.DictReader(open(albumsfile, encoding='utf-8'))
@@ -67,6 +67,31 @@ def loadAlbums(catalog):
         model.addAlbum(catalog, album)
     return model.albumSize(catalog)
 
+def loadArtists(catalog):
+    """
+    Carga los artistas del archivo y los agrega a la lista de artistas
+    """
+    artistFile = cf.data_dir + 'Datos/spotify-artists-utf8-small.csv'
+    input_file = csv.DictReader(open(artistFile, encoding='utf-8'))
+    for artist in input_file:
+        model.addArtist(catalog, artist)
+    return model.artistSize(catalog)
+
+def loadSongs(catalog):
+    """
+    """
+    songFile = cf.data_dir + 'Datos/spotify-tracks-utf8-small.csv'
+    input_file = csv.DictReader(open(songFile, encoding='utf-8'))
+    for song in input_file:
+        model.addSong(catalog, song)
+    return model.songSize(catalog)
+
 # Funciones de ordenamiento
+
+def sortAlbums(catalog):
+    """
+    Ordena los libros por average_rating
+    """
+    model.sortAlbums(catalog)
 
 # Funciones de consulta sobre el catálogo
