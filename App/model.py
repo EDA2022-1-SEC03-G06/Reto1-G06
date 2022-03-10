@@ -67,8 +67,22 @@ def addAlbum(catalog, album):
     # Cada artista, se crea en la lista de libros del catalogo, y se
     # crea un libro en la lista de dicho autor (apuntador al libro)
     for artist in artists:
-        addAlbumArtists(catalog, artist.strip(), album)
+        addAlbumArtist(catalog, artist.strip(), album)
     return catalog
+
+
+def addTrack():
+
+    "Adiciona una canción a la lista de canciones"
+    track = newtrack(Track['Track_name'],Track['Track_id'])
+    lt.addLast(catalog['songs'],track)
+
+    return catalog
+
+
+
+
+
 
 # Funciones para creacion de datos
 
