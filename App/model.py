@@ -59,6 +59,17 @@ def newCatalog():
 
 # Funciones para agregar informacion al catalogo
 
+def addAlbum(catalog, album):
+    # Se adiciona el album a la lista de albumes
+    lt.addLast(catalog['albums'], album)
+    # Se obtienen los artistas del album
+    artists = album['artists'].split(",")
+    # Cada artista, se crea en la lista de libros del catalogo, y se
+    # crea un libro en la lista de dicho autor (apuntador al libro)
+    for artist in artists:
+        addAlbumArtists(catalog, artist.strip(), album)
+    return catalog
+
 # Funciones para creacion de datos
 
 # Funciones de consulta
